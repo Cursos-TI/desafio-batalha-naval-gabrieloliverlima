@@ -10,6 +10,30 @@ int main() {
     // Sugestão: Posicione dois navios no tabuleiro, um verticalmente e outro horizontalmente.
     // Sugestão: Utilize `printf` para exibir as coordenadas de cada parte dos navios.
 
+    int tabuleiro[10][10] = {0}; // Inicializa o tabuleiro com 0 (água)
+    int i, j;
+    
+    // Posiciona um navio horizontalmente na linha 2, começando da coluna 4
+    int linhaH = 2, colunaH = 4;
+    for (i = 0; i < 3; i++) {
+        tabuleiro[linhaH][colunaH + i] = 3;
+    }
+    
+    // Posiciona um navio verticalmente na coluna 6, começando da linha 5
+    int linhaV = 5, colunaV = 6;
+    for (i = 0; i < 3; i++) {
+        tabuleiro[linhaV + i][colunaV] = 3;
+    }
+    
+    // Exibe o tabuleiro
+    for (i = 0; i < 10; i++) {
+        for (j = 0; j < 10; j++) {
+            printf("%d ", tabuleiro[i][j]);
+        }
+        printf("\n");
+    }
+
+
     // Nível Aventureiro - Expansão do Tabuleiro e Posicionamento Diagonal
     // Sugestão: Expanda o tabuleiro para uma matriz 10x10.
     // Sugestão: Posicione quatro navios no tabuleiro, incluindo dois na diagonal.
@@ -36,5 +60,6 @@ int main() {
     // 1 1 1 1 1
     // 0 0 1 0 0
 
+    
     return 0;
 }
