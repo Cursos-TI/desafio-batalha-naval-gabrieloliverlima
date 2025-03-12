@@ -20,15 +20,48 @@ int main() {
     for (i = 5; i < 8; i++) {
         tabuleiro[i][6] = 3;
     }
-    
-    // Posiciona um navio na diagonal principal (de cima para baixo)
-    for (i = 0; i < 3; i++) {
+
+    // Posiciona um navio diagonalmente (
+    for (i = 1; i < 4; i++) {
         tabuleiro[i][i] = 3;
     }
-    
-    // Posiciona um navio na diagonal secundária (de cima para baixo, da direita para a esquerda)
-    for (i = 0; i < 3; i++) {
+
+    // Posiciona um navio diagonalmente (/)
+    for (i = 1; i < 4; i++) {
         tabuleiro[i][9 - i] = 3;
+    }
+    
+    // Adiciona habilidades especiais ao tabuleiro
+    int origemCone[2] = {5, 5};
+    int origemCruz[2] = {3, 3};
+    int origemOctaedro[2] = {6, 6};
+
+    // Aplicando área de efeito - Cone
+    for (i = 0; i < 3; i++) {
+        for (j = -i; j <= i; j++) {
+            if (origemCone[0] + i < 10 && origemCone[1] + j >= 0 && origemCone[1] + j < 10) {
+                tabuleiro[origemCone[0] + i][origemCone[1] + j] = 5;
+            }
+        }
+    }
+
+    // Aplicando área de efeito - Cruz
+    for (i = -2; i <= 2; i++) {
+        if (origemCruz[0] + i >= 0 && origemCruz[0] + i < 10) {
+            tabuleiro[origemCruz[0] + i][origemCruz[1]] = 5;
+        }
+        if (origemCruz[1] + i >= 0 && origemCruz[1] + i < 10) {
+            tabuleiro[origemCruz[0]][origemCruz[1] + i] = 5;
+        }
+    }
+
+    // Aplicando área de efeito - Octaedro
+    for (i = -2; i <= 2; i++) {
+        for (j = -2 + abs(i); j <= 2 - abs(i); j++) {
+            if (origemOctaedro[0] + i >= 0 && origemOctaedro[0] + i < 10 && origemOctaedro[1] + j >= 0 && origemOctaedro[1] + j < 10) {
+                tabuleiro[origemOctaedro[0] + i][origemOctaedro[1] + j] = 5;
+            }
+        }
     }
     
     // Exibe o tabuleiro
